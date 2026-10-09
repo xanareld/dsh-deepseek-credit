@@ -25,4 +25,28 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm verify
+      # One step, and it names its own culprit. A bare `pnpm verify` reports only
+      # "exit code 1" to a reader who cannot open the runner log, which is exactly
+      # how a red build once took three rounds to explain; `::error::` lines become
+      # annotations readable through the API and the pull-request view.
+      - name: Verify
+        shell: bash
+        run: |
+          if pnpm verify; then
+            exit 0
+          fi
+          echo "::error::pnpm verify failed - re-running each step to name the culprit"
+          for step in lint format:check test metrics; do
+            log="verify-${step//:/-}.log"
+            if pnpm "$step" > "$log" 2>&1; then
+              echo "::warning::$step passes on its own"
+              continue
+            fi
+            echo "::error::$step failed; last 25 lines:"
+            tail -n 25 "$log" | tr -d '\r' | while IFS= read -r line; do
+              echo "::error::  $line"
+            done
+            exit 1
+          done
+          echo "::error::every step passes on its own: the failure is in the pipeline, not in a step"
+          exit 1
