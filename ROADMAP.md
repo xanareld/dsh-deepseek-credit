@@ -81,6 +81,20 @@ State and decisions. Usage is in [README.md](README.md); agent instructions are 
     plugin it publishes, its README announces that plugin, and no ignore file, lint
     config or roadmap mentions another product: a landing page that advertises
     something absent is a defect, not a plan.
+12. **The package carries the repository's name: `dsh-deepseek-credit`.** It was
+    `dsh-plugin-tariff-credit`. The `dsh-plugin-` prefix is the ecosystem convention —
+    the Plugins page's own placeholder offers `dsh-plugin-whale-pet` — but nothing in
+    the harness keys on it: the loader resolves the patch row's `name` from the
+    profile's bundle list, whatever that package is called. What the harness _does_
+    key on is the client bundle's `id`, which must equal the package name, and every
+    shipped bundle obeys that. The row id stays `tariff-credit`, as the harness's own
+    packages keep a short id unrelated to their package name
+    (`@deepseek-ai/dsh-client-ui-chat` is `ui-chat`), so a profile patch that targets
+    the row by id keeps working. Consequence, handled: an installed profile names the
+    package in its dependency key, its link path and its bundles list, so the desktop
+    profile here was updated and reinstalled, and `import('dsh-deepseek-credit')` from
+    it resolves and exports `apply`. The npm name was checked as free before the
+    rename.
 
 ## Next
 
