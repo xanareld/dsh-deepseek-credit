@@ -28,7 +28,7 @@ assertions are written in (see below):
 cd dsh-plugin-tariff-credit && pnpm test
 ```
 
-200 test entries, 197 cases, no network, no DSH runtime, no browser.
+201 test entries, 198 cases, no network, no DSH runtime, no browser.
 
 ## Quality thresholds
 
@@ -141,9 +141,22 @@ laptop and a runner give the same answer. The widget itself keeps using the mach
 zone; only the assertions are pinned. Verified in `Europe/Paris`, `UTC`,
 `Pacific/Auckland` and `America/Anchorage`, on Node 22 and Node 24.
 
-Three lessons worth keeping: run the suite on the Node version the CI declares, run it
-under a foreign timezone as well, and read `# cancelled` in the runner's summary,
-because a cancellation never appears as a failure.
+**The locale.** The same trap, one level deeper, and this one was a defect in the
+plugin rather than in a test. `Intl.DateTimeFormat(undefined, …)` lets the reader's
+own locale choose the hour cycle: an `en-US` runtime answers `1:30 PM` where a
+`fr-FR` one answers `13:30`. The switch line used that, while the strip beside it
+pinned 24 hours, so a US reader saw one panel in two formats — and the suite, written
+on a `fr-FR` machine, went red on the `en-US` runners with
+`later today reads as a plain time`. Every clock format in the plugin and in the
+agent tool now names `en-CA` and `hour12: false`, and
+`test/client.test.mjs` asserts the 24-hour shape on values it reads, which is a guard
+that holds in any locale instead of only in the author's.
+
+Three lessons worth keeping: run the suite on the Node version the CI declares, run
+it under a foreign timezone as well, and read `# cancelled` in the runner's summary,
+because a cancellation never appears as a failure. To those, add a fourth: an
+assertion that inherits the runtime's locale or zone only passes where it was
+written, and a runner is neither.
 
 ## What the suite does not cover
 

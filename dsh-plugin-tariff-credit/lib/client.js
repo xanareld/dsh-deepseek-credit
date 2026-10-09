@@ -278,15 +278,21 @@ window.__ModuleLoader__.load({
     }
     /**
      * Read a clock time in a named zone, or in the page's own zone.
+     *
+     * The locale is pinned rather than left to the runtime: `undefined` would let
+     * the reader's own locale choose the hour cycle, so an `en-US` machine would
+     * print `1:30 PM` in the switch line while the strip beside it prints `13:30`
+     * from a formatter that does pin 24 hours. One panel, one format.
      * @param ms - instant.
      * @param timeZone - IANA zone, or undefined for the page's zone.
      * @returns `HH:MM`.
      */
     function formatClock(ms, timeZone) {
       try {
-        return new Intl.DateTimeFormat(undefined, {
+        return new Intl.DateTimeFormat('en-CA', {
           hour: '2-digit',
           minute: '2-digit',
+          hour12: false,
           ...(timeZone === undefined ? {} : { timeZone })
         }).format(new Date(ms))
       } catch {
@@ -334,20 +340,25 @@ window.__ModuleLoader__.load({
       if (target === dayKey(nowMs, timeZone)) return formatClock(ms, timeZone)
       if (target === dayKey(nowMs + 864e5, timeZone)) return t('tomorrow') + ' ' + formatClock(ms, timeZone)
       try {
-        return new Intl.DateTimeFormat(undefined, {
+        return new Intl.DateTimeFormat('en-CA', {
           weekday: 'short',
           hour: '2-digit',
           minute: '2-digit',
+          hour12: false,
           ...(timeZone === undefined ? {} : { timeZone })
         }).format(new Date(ms))
       } catch {
         return formatClock(ms, timeZone)
       }
     }
-    /** @returns a local date and time. */
+    /** @returns a local date and time, in the panel's own 24-hour format. */
     function formatLocalStamp(ms) {
       try {
-        return new Intl.DateTimeFormat(undefined, { dateStyle: 'short', timeStyle: 'short' }).format(new Date(ms))
+        return new Intl.DateTimeFormat('en-CA', {
+          dateStyle: 'short',
+          timeStyle: 'short',
+          hour12: false
+        }).format(new Date(ms))
       } catch {
         return new Date(ms).toISOString()
       }
@@ -2091,6 +2102,8 @@ window.__ModuleLoader__.load({
       formatShare,
       formatDuration,
       formatSwitch,
+      formatClock,
+      formatLocalStamp,
       dayKey,
       daySegments,
       barLabel,

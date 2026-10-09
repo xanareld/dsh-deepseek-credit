@@ -280,12 +280,20 @@ function countdownText(seconds) {
 
 /**
  * Name the instant the rate window changes.
+ *
+ * The locale and the hour cycle are pinned, for the same reason the widget pins
+ * them: `undefined` would let an `en-US` host answer `10/5/26, 1:30 PM` where the
+ * widget beside it says `13:30`, and the report is read next to the panel.
  * @param switchesAt - epoch milliseconds, when known.
- * @returns short local date and time, or undefined.
+ * @returns short date and time, or undefined.
  */
 function switchTimeText(switchesAt) {
   if (switchesAt === undefined) return undefined
-  return new Date(switchesAt).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })
+  return new Date(switchesAt).toLocaleString('en-CA', {
+    dateStyle: 'short',
+    timeStyle: 'short',
+    hour12: false
+  })
 }
 
 /**

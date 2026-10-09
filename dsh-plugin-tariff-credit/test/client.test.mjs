@@ -361,6 +361,26 @@ test('the next switch names its day so a bare clock time cannot mislead', () => 
   assert.match(later, /\d{1,2}:\d{2}/, later)
 })
 
+test('every clock time is 24-hour, whatever the runtime locale is', () => {
+  // One panel, one format: the strip, the switch line and the balance stamp all read
+  // `HH:MM`. Left to the runtime, an `en-US` machine rendered `1:30 PM` in the switch
+  // line beside a strip that already said `13:30` — and that is how this suite went red
+  // on the CI runners, whose default locale is `en-US`, while passing on the `fr-FR`
+  // machine it was written on. These assertions hold on any locale, which is the point.
+  const now = Date.UTC(2026, 9, 5, 10, 30)
+  const stamp = Date.UTC(2026, 9, 5, 15, 5)
+  assert.equal(internals.formatClock(stamp, 'Europe/Paris'), '17:05')
+  assert.match(internals.formatClock(stamp, 'Europe/Paris'), /^[0-2]\d:[0-5]\d$/)
+  for (const text of [
+    internals.formatSwitch(stamp, now, 'Europe/Paris'),
+    internals.formatSwitch(Date.UTC(2026, 9, 9, 1, 0), now, 'Europe/Paris'),
+    internals.formatLocalStamp(stamp)
+  ]) {
+    assert.doesNotMatch(text, /[AP]\.?M/i, text)
+  }
+  assert.match(internals.formatLocalStamp(stamp), /^\d{4}-\d{2}-\d{2}, \d{2}:\d{2}$/)
+})
+
 test('the inlined pricing agrees with the Host pricing module', () => {
   const usage = { uncachedInputTokens: 1500, cacheReadTokens: 9000, cacheWriteTokens: 20, outputTokens: 700 }
   const schedule = normalizeSchedule(undefined)
