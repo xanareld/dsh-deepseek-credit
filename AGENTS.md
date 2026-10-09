@@ -53,3 +53,9 @@ Adding a package means adding it to `pnpm-workspace.yaml`, to the package list i
   only, and the diagnostics note contains no secret.
 - **Formatting is enforced**: `pnpm format` before `pnpm verify` when you have been
   editing by hand, because `verify` checks formatting rather than applying it.
+- **The suite must pass in the runner's environment, not only in the author's.** Three
+  red CI runs were one Node version (an unreferenced `AbortSignal.timeout` timer, which
+  Node 22 reports as a **cancelled** test rather than a failing one), one timezone (the
+  test script pins `TZ=UTC`) and one locale (clock formats pin `en-CA` and `hour12:
+false`). Run the suite on the Node the CI declares, and read `# cancelled` in its
+  summary: a cancellation never appears as a failure.

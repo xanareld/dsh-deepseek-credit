@@ -130,6 +130,5 @@ approximated.
 
 ## Quality thresholds
 
-Declared once, in `eslint.config.js`, and enforced by `pnpm lint`. See
-`docs/testing.md` for the policy (set at the level of the existing code, then
-ratcheted down, never up).
+Declared once, in `eslint.config.js`, and enforced by `pnpm lint`: set at the level of
+the existing code, then ratcheted down, never up.

@@ -199,7 +199,7 @@ test('a timeout is reported as a timeout', async () => {
   // not decoration: Node's `AbortSignal.timeout` timer is unreferenced, so a fake
   // fetch that holds nothing lets the event loop drain before the deadline and the
   // timeout can never fire. On Node 22 the test runner reports that as a cancelled
-  // test rather than as a failure, which is how this was found (see docs/testing.md).
+  // test rather than as a failure, which is how this was found.
   const reader = createBalanceReader({
     timeoutMs: 10,
     fetchImpl: (_url, init) =>

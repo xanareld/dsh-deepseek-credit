@@ -74,8 +74,9 @@ State and decisions. Usage is in [README.md](README.md); agent instructions are 
     Paris machine (a rendered `06:00` against the runner's `04:00`), and an `en-US`
     locale instead of `fr-FR` (a switch line reading `1:30 PM` beside a strip reading
     `13:30`). The last one was a **plugin** defect, not a test defect: every clock
-    format now pins `en-CA` and `hour12: false`. [docs/testing.md](docs/testing.md)
-    holds the three traps and the four lessons; the CI step now names its own failing
+    format now pins `en-CA` and `hour12: false`. Each trap is guarded where it belongs —
+    a fake fetch that holds a handle, a pinned timezone, a 24-hour format — and the rule
+    they add up to is in [AGENTS.md](AGENTS.md). The CI step now names its own failing
     sub-step, because a bare exit code cost a round trip each time.
 11. **The repository describes one plugin and nothing else.** It is named after the
     plugin it publishes, its README announces that plugin, and no ignore file, lint

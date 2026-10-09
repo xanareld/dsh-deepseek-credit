@@ -73,9 +73,9 @@ the code that exists, and then ratcheted down.
 
 Packages sit at the repository root, because a DSH profile links those exact paths, and
 the documentation lives in [`docs/`](docs/), never inside a package:
-[docs/architecture.md](docs/architecture.md) for the design and its reasons,
-[docs/testing.md](docs/testing.md) for the suite and what it does not cover,
-[docs/reference.md](docs/reference.md) for every external fact with its source.
+[docs/architecture.md](docs/architecture.md) for the design and its reasons, and
+[docs/reference.md](docs/reference.md) for every external fact with its source. The suite
+runs without a network, a browser or the harness runtime.
 
 ## Licence
 

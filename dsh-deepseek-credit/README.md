@@ -169,11 +169,11 @@ which is what lets the Plugins page edit the keys below.
 
 ```sh
 pnpm verify                 # at the repository root: lint, format, tests, metrics
-node --test                 # just this package's 197 cases, no network, no DSH
+node --test                 # just this package's 198 cases, no network, no DSH
 ```
 
-See [docs/testing.md](../../docs/testing.md) for what the suite covers and how the
-quality thresholds are set.
+The suite runs without a network, a browser or the harness runtime, and the quality
+thresholds are declared once in the repository's `eslint.config.js`.
 
 ## License
 

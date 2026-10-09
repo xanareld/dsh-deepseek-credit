@@ -124,4 +124,4 @@ console.log(
 console.log(`exported symbols       ${totals.lib.exports}`)
 console.log(`test cases             ${totals.test.tests}`)
 console.log('')
-console.log('Thresholds that can fail a build: eslint.config.js (see docs/testing.md).')
+console.log('Thresholds that can fail a build: eslint.config.js.')

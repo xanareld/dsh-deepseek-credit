@@ -5,11 +5,11 @@ import globals from 'globals'
  * Quality thresholds for this repository — the single place where they are
  * declared.
  *
- * Policy (see docs/testing.md): thresholds are set at the level of the code that
- * exists, then ratcheted down as the code improves. They are never raised to make
- * a change pass. The two documented exceptions are the hand-written browser
- * bundle, whose size comes from `createElement` call expressions rather than
- * logic, and the test files, whose length comes from one test case per scenario.
+ * Policy: thresholds are set at the level of the code that exists, then ratcheted
+ * down as the code improves. They are never raised to make a change pass. The two
+ * documented exceptions are the hand-written browser bundle, whose size comes from
+ * `createElement` call expressions rather than logic, and the test files, whose
+ * length comes from one test case per scenario.
  */
 export default [
   {
