@@ -5,6 +5,15 @@
   "type": "module",
   "license": "MIT",
   "author": "xanareld",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xanareld/dsh-deepseek-credit.git",
+    "directory": "dsh-plugin-tariff-credit"
+  },
+  "homepage": "https://github.com/xanareld/dsh-deepseek-credit/tree/main/dsh-plugin-tariff-credit#readme",
+  "bugs": {
+    "url": "https://github.com/xanareld/dsh-deepseek-credit/issues"
+  },
   "keywords": [
     "dsh",
     "dsh-plugin",

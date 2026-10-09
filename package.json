@@ -5,6 +5,14 @@
   "description": "DeepSeek Harness plugins: sidebar cost, peak/off-peak rate window and remaining API credit.",
   "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xanareld/dsh-deepseek-credit.git"
+  },
+  "homepage": "https://github.com/xanareld/dsh-deepseek-credit#readme",
+  "bugs": {
+    "url": "https://github.com/xanareld/dsh-deepseek-credit/issues"
+  },
   "engines": {
     "node": ">=20.3.0"
   },

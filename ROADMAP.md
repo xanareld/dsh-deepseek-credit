@@ -71,6 +71,16 @@ State and decisions. Usage is in [README.md](README.md); agent instructions are 
     `test/manifest.test.mjs` now asserts _which_ dependency exists rather than its
     absence, and the README, `docs/architecture.md` and `lib/index.js` say the same
     thing.
+11. **The suite has to pass in the runner's environment, not only in the author's.**
+    Three red CI runs, each one an environment the author's machine did not have:
+    Node 22 instead of 24 (an unreferred `AbortSignal.timeout` timer made three tests
+    come back _cancelled_ while every assertion passed), a UTC runner instead of a
+    Paris machine (a rendered `06:00` against the runner's `04:00`), and an `en-US`
+    locale instead of `fr-FR` (a switch line reading `1:30 PM` beside a strip reading
+    `13:30`). The last one was a **plugin** defect, not a test defect: every clock
+    format now pins `en-CA` and `hour12: false`. [docs/testing.md](docs/testing.md)
+    holds the three traps and the four lessons; the CI step now names its own failing
+    sub-step, because a bare exit code cost a round trip each time.
 
 ## Next
 
@@ -82,15 +92,27 @@ Ordered by value, not by effort.
    same thresholds, same CI, its own README.
 3. **Publish to npm** once 1–2 are done and the name is checked as available.
 
-## Before the first push
+## Publishing
 
-Only facts the repository owner holds; deliberately left absent rather than
-guessed.
+Done, in this order:
 
-- `repository`, `homepage` and `bugs` in the root and package `package.json`
-  files — fill them with the real URL once the GitHub repository exists, so npm
-  and GitHub link to each other.
-- The git author identity (`git config user.name` / `user.email`) for the first
-  commit; the repository is initialized but intentionally left uncommitted.
-- A screenshot or short recording of the widget for the README: a visual plugin
-  sells itself with one image.
+- the repository exists: <https://github.com/xanareld/dsh-deepseek-credit>, **public**,
+  licence detected as MIT by GitHub, default branch `main`;
+- the first push went through a **repository-scoped deploy key**, not an account key:
+  the private half lives at `~/.ssh/dsh_tariff_credit` on this machine, `~/.ssh/config`
+  maps it to the alias `github-tariff-credit` with `IdentitiesOnly yes` and
+  `BatchMode yes`, and the remote is `github-tariff-credit:xanareld/dsh-deepseek-credit.git`.
+  That key can write to that repository and to nothing else, and deleting the deploy
+  key on GitHub revokes it;
+- GitHub's published host key is pinned in `~/.ssh/known_hosts` (verified against the
+  fingerprint GitHub documents), so no trust-on-first-use ever happened;
+- `repository`, `homepage` and `bugs` now name the real URL in both manifests, and the
+  root README carries the workflow badge;
+- CI is **green on Ubuntu and Windows** (`verify`), and the step annotates its own
+  failing sub-step rather than reporting a bare exit code.
+
+Still owner-held:
+
+- a screenshot or short recording of the widget for the README: a visual plugin sells
+  itself with one image;
+- publishing to npm (see Next), which needs a second, separate credential.

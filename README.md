@@ -1,5 +1,7 @@
 # dsh-plugins
 
+[![verify](https://github.com/xanareld/dsh-deepseek-credit/actions/workflows/verify.yml/badge.svg)](https://github.com/xanareld/dsh-deepseek-credit/actions/workflows/verify.yml)
+
 Plugins for [DeepSeek Harness](https://github.com/deepseek-ai) (DSH): what a
 conversation cost, which rate window is in force, and how much API credit is
 left — in the sidebar where you already look.
