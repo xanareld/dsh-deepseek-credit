@@ -42,8 +42,16 @@ jobs:
               echo "::warning::$step passes on its own"
               continue
             fi
-            echo "::error::$step failed; last 25 lines:"
-            tail -n 25 "$log" | tr -d '\r' | while IFS= read -r line; do
+            echo "::error::$step failed - the lines that explain it, last 15:"
+            # A plain tail of a failing TAP run can be all passing subtests, which
+            # is exactly how this step failed to explain itself once. Grep for the
+            # lines that carry the cause, and keep the annotation budget for them.
+            grep -a -n -E 'not ok|✖|AssertionError|Error|error|Unhandled|uncaught|fatal|# (tests|pass|fail|cancelled)' "$log" |
+              tail -n 15 | tr -d '\r' | while IFS= read -r line; do
+                echo "::error::  $line"
+              done
+            echo "::error::$step, last 3 lines of its output:"
+            tail -n 3 "$log" | tr -d '\r' | while IFS= read -r line; do
               echo "::error::  $line"
             done
             exit 1
