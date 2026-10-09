@@ -76,12 +76,26 @@ function isRateRow(row) {
 }
 
 /**
+ * Whether a config value is a usable API base.
+ *
+ * This tests the shape rather than comparing the raw value with the resolved one:
+ * resolution normalises a trailing slash away, and an equality test read that
+ * normalisation as a refusal — the plugin reported "not an http(s) URL" about a URL it
+ * had just accepted.
+ * @param value - raw config value.
+ * @returns true for an http(s) URL.
+ */
+function isApiBaseValue(value) {
+  return typeof value === 'string' && /^https?:\/\//.test(value)
+}
+
+/**
  * Resolve the API base.
  * @param value - raw config value.
  * @returns the effective base URL, without a trailing slash.
  */
 function resolveApiBase(value) {
-  return typeof value === 'string' && /^https?:\/\//.test(value) ? value.replace(/\/+$/, '') : DEFAULT_API_BASE
+  return isApiBaseValue(value) ? value.replace(/\/+$/, '') : DEFAULT_API_BASE
 }
 
 /**
@@ -111,6 +125,17 @@ function resolveApiKeyRef(value) {
 }
 
 /**
+ * Whether a config value is one of the accepted diagnostics shapes: `true` for the
+ * default note, `false` to leave it off, or a non-empty path. An empty path is not a
+ * destination, so it counts as unusable and is reported like any other typo.
+ * @param value - raw config value.
+ * @returns true when the value is usable as written.
+ */
+function isDiagnosticsValue(value) {
+  return value === true || value === false || (typeof value === 'string' && value.length > 0)
+}
+
+/**
  * Resolve the diagnostics destination: off unless asked for, because an installed
  * plugin writes nothing to disk on its own. `true` explains a silent channel
  * failure in the OS temp directory; a string names the destination. Kept because
@@ -121,7 +146,7 @@ function resolveApiKeyRef(value) {
  */
 function resolveChannelDiagnostics(value) {
   if (value === true) return DEFAULT_REPORT_PATH
-  return typeof value === 'string' ? value : false
+  return typeof value === 'string' && value.length > 0 ? value : false
 }
 
 /**
@@ -150,7 +175,7 @@ function resolveRates(override) {
  */
 function scalarWarnings(raw, resolved) {
   const warnings = []
-  if (raw.apiBase !== undefined && resolveApiBase(raw.apiBase) !== raw.apiBase) {
+  if (raw.apiBase !== undefined && !isApiBaseValue(raw.apiBase)) {
     warnings.push(`apiBase: ${JSON.stringify(raw.apiBase)} is not an http(s) URL; using ${resolved.apiBase}`)
   }
   if (raw.apiKeyRef !== undefined && resolveApiKeyRef(raw.apiKeyRef) !== liveValue(raw.apiKeyRef)) {
@@ -169,10 +194,7 @@ function scalarWarnings(raw, resolved) {
       warnings.push(`${key}: ${value} is outside ${min}..${max}; using ${resolved[key]}`)
     }
   }
-  if (
-    raw.channelDiagnostics !== undefined &&
-    resolveChannelDiagnostics(raw.channelDiagnostics) !== raw.channelDiagnostics
-  ) {
+  if (raw.channelDiagnostics !== undefined && !isDiagnosticsValue(raw.channelDiagnostics)) {
     warnings.push(
       `channelDiagnostics: ${JSON.stringify(raw.channelDiagnostics)} is not true, false or a path; diagnostics are off`
     )

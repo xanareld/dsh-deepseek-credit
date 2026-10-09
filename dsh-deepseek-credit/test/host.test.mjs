@@ -566,6 +566,31 @@ test('the resolved config keeps the widget defaults', () => {
   assert.equal(resolveConfig({ channelDiagnostics: 'C:/tmp/note.json' }).channelDiagnostics, 'C:/tmp/note.json')
 })
 
+test('a value that is merely normalised is not reported as refused', () => {
+  // Both of these were reported: the check compared the raw value with the resolved one,
+  // so `true` (which resolves to the default note's path) and a base URL with a trailing
+  // slash (which resolution strips) read as refusals. The plugin warned about values it
+  // had just accepted, which is worse than not warning at all: it teaches the operator to
+  // ignore the report.
+  for (const config of [
+    { channelDiagnostics: true },
+    { channelDiagnostics: false },
+    { channelDiagnostics: 'C:/tmp/note.json' },
+    { apiBase: 'https://api.deepseek.com/' },
+    { apiBase: 'http://127.0.0.1:8080//' }
+  ]) {
+    assert.deepEqual(resolveConfig(config).warnings, [], JSON.stringify(config))
+  }
+  assert.equal(resolveConfig({ apiBase: 'https://api.deepseek.com/' }).apiBase, 'https://api.deepseek.com')
+  assert.equal(resolveConfig({ apiBase: 'http://127.0.0.1:8080//' }).apiBase, 'http://127.0.0.1:8080')
+
+  // The shapes that really are unusable still are reported.
+  assert.match(resolveConfig({ channelDiagnostics: 42 }).warnings.join('\n'), /^channelDiagnostics: 42/m)
+  assert.match(resolveConfig({ channelDiagnostics: '' }).warnings.join('\n'), /^channelDiagnostics: ""/m)
+  assert.equal(resolveConfig({ channelDiagnostics: '' }).channelDiagnostics, false, 'an empty path is not a path')
+  assert.match(resolveConfig({ apiBase: 'ftp://api.deepseek.com' }).warnings.join('\n'), /^apiBase:/m)
+})
+
 test('a refused configuration value is reported, not swallowed', () => {
   const resolved = resolveConfig({
     apiBase: 'not-a-url',
