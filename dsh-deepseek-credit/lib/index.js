@@ -15,7 +15,7 @@
  * validating by hand on top of the schema, so a value the document layer would not
  * have caught is still refused and reported rather than half-applied.
  *
- * @module dsh-plugin-tariff-credit
+ * @module dsh-deepseek-credit
  */
 
 import { DEFAULT_API_BASE, DEFAULT_API_KEY_REF, createBalanceReader } from './balance.js'

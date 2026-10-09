@@ -5,6 +5,5 @@ default-workspace/
 # publishes are formatted, so a sibling package directory is ignored by pattern
 # rather than by name.
 dsh-plugin-*/
-!dsh-plugin-tariff-credit/
 
 pnpm-lock.yaml

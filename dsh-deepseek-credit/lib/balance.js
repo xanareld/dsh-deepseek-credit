@@ -21,7 +21,7 @@
  * the parsed numbers. Amounts stay decimal strings, exactly as they arrive,
  * because they are authoritative and a float round trip is not.
  *
- * @module dsh-plugin-tariff-credit/balance
+ * @module dsh-deepseek-credit/balance
  * @see https://api-docs.deepseek.com/api/get-user-balance/
  */
 

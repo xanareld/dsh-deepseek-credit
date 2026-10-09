@@ -13,7 +13,7 @@
  * written to the OS temp directory, and only on an attempt — at most once per
  * mount and once per service change — so it is not a running journal.
  *
- * @module dsh-plugin-tariff-credit/channel-report
+ * @module dsh-deepseek-credit/channel-report
  */
 
 import { writeFileSync } from 'node:fs'
@@ -21,7 +21,7 @@ import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 
 /** Where the note lands unless the plugin config names another path. */
-export const DEFAULT_REPORT_PATH = join(tmpdir(), 'dsh-plugin-tariff-credit.json')
+export const DEFAULT_REPORT_PATH = join(tmpdir(), 'dsh-deepseek-credit.json')
 
 /**
  * Build the reporter.

@@ -1,4 +1,4 @@
-# dsh-plugin-tariff-credit
+# dsh-deepseek-credit
 
 A DeepSeek Harness sidebar widget, at the bottom of the sidebar just above
 "… More":
@@ -64,7 +64,7 @@ Equivalently, from a profile:
 
 ```sh
 cd "$DSH_HOME/profiles/<profile>"
-pnpm add /path/to/dsh-plugin-tariff-credit
+pnpm add /path/to/dsh-deepseek-credit
 ```
 
 Uninstall from the same Plugins page (**Remove**).

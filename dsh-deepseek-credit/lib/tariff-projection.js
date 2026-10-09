@@ -16,7 +16,7 @@
  * same totals — so the money always matches the token figures the UI already
  * shows. The only additions are the route (model) and the cost.
  *
- * @module dsh-plugin-tariff-credit/tariff-projection
+ * @module dsh-deepseek-credit/tariff-projection
  */
 
 /**

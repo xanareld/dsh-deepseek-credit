@@ -4,10 +4,8 @@
 /default-workspace/
 
 # Other working trees can live beside this one, and they are not part of this
-# repository: a sibling package directory is ignored by pattern rather than by name,
-# and the package this repository publishes is re-included.
+# repository: a sibling package directory is ignored by pattern rather than by name.
 /dsh-plugin-*/
-!/dsh-plugin-tariff-credit/
 
 # Installed tooling.
 node_modules/

@@ -37,7 +37,7 @@ const bundle = definition.factory(() => ({}))
 const internals = bundle.__internals
 
 test('the bundle declares the package name and the plugin body', () => {
-  assert.equal(definition.id, 'dsh-plugin-tariff-credit')
+  assert.equal(definition.id, 'dsh-deepseek-credit')
   assert.equal(typeof definition.factory, 'function')
   assert.equal(typeof bundle.apply, 'function')
   assert.deepEqual(bundle.inject, ['slots', 'connection'])

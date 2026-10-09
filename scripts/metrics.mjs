@@ -19,7 +19,7 @@ import { fileURLToPath } from 'node:url'
 const ROOT = join(fileURLToPath(new URL('.', import.meta.url)), '..')
 
 /** Package directories measured, in report order. */
-const PACKAGES = ['dsh-plugin-tariff-credit']
+const PACKAGES = ['dsh-deepseek-credit']
 
 /** Sections measured inside a package: shipped code, then tests. */
 const SECTIONS = ['lib', 'test']

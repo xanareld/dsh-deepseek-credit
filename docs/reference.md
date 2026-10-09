@@ -24,7 +24,7 @@ entirely.
 | Summer (UTC+2) | 03:00–06:00 and 08:00–12:00 |
 | Winter (UTC+1) | 02:00–05:00 and 07:00–11:00 |
 
-Enforced by `dsh-plugin-tariff-credit/lib/schedule.js`; the guarded values live
+Enforced by `dsh-deepseek-credit/lib/schedule.js`; the guarded values live
 there and are asserted window-by-window by `test/schedule.test.mjs`.
 
 ## DeepSeek list prices
@@ -42,7 +42,7 @@ DeepSeek publishes no separate cache-_write_ premium, so cache writes are billed
 as cache-miss input. Retired `deepseek-v4-flash*` names are served by
 DeepSeek-V4.1-Flash and billed at the Flash price.
 
-Enforced by `dsh-plugin-tariff-credit/lib/pricing.js`; every figure above is
+Enforced by `dsh-deepseek-credit/lib/pricing.js`; every figure above is
 asserted by `test/pricing.test.mjs`, along with the invariant "off-peak is
 exactly half of peak".
 
@@ -70,7 +70,7 @@ Authorization: Bearer <api-key>
 Amounts are decimal **strings** and are kept in that form end to end: they are
 authoritative, and a float round trip is not.
 
-Implemented by `dsh-plugin-tariff-credit/lib/balance.js`.
+Implemented by `dsh-deepseek-credit/lib/balance.js`.
 
 ## DeepSeek Harness
 

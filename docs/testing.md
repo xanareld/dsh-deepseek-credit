@@ -25,7 +25,7 @@ Just the tests, in one package — through the script, which pins the timezone t
 assertions are written in (see below):
 
 ```sh
-cd dsh-plugin-tariff-credit && pnpm test
+cd dsh-deepseek-credit && pnpm test
 ```
 
 201 test entries, 198 cases, no network, no DSH runtime, no browser.

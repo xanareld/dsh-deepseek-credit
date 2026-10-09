@@ -9,4 +9,4 @@
 
 - insert:
     - id: tariff-credit
-      name: dsh-plugin-tariff-credit
+      name: dsh-deepseek-credit

@@ -11,7 +11,7 @@
  * client's job. Module-less (no imports) so the browser bundle can carry the
  * same logic and a test can compare both copies.
  *
- * @module dsh-plugin-tariff-credit/schedule
+ * @module dsh-deepseek-credit/schedule
  */
 
 /** Milliseconds in a minute. */

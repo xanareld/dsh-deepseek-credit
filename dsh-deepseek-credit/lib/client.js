@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-  id: 'dsh-plugin-tariff-credit',
+  id: 'dsh-deepseek-credit',
   factory: (require) => {
     var module = { exports: {} }
     var exports = module.exports
@@ -16,13 +16,13 @@ window.__ModuleLoader__.load({
     // spend lines and the account.
     const css =
       '.dsh-tc-layer{box-sizing:border-box;width:100%;flex-direction:column;gap:2px;padding:6px 6px 4px;display:flex}.dsh-tc-summary{box-sizing:border-box;width:100%;color:var(--dsw-alias-label-primary);text-align:left;cursor:pointer;background:0 0;border:0;border-radius:12px;flex-direction:column;gap:1px;padding:5px 6px;font:inherit;display:flex}.dsh-tc-summary:hover{background:var(--dsw-alias-interactive-bg-hover)}.dsh-tc-summary:focus-visible{outline:var(--dsw-focus-ring-width,2px) solid var(--dsw-focus-ring-color,var(--dsw-alias-state-business-primary));outline-offset:-2px}.dsh-tc-line{align-items:center;gap:6px;min-width:0;font-size:12px;line-height:16px;display:flex}.dsh-tc-label{color:var(--dsw-alias-label-tertiary);flex:none}.dsh-tc-value{color:var(--dsw-alias-label-secondary);text-overflow:ellipsis;white-space:nowrap;margin-left:auto;font-variant-numeric:tabular-nums;flex:none;overflow:hidden}.dsh-tc-state{min-width:0;text-overflow:ellipsis;white-space:nowrap;flex:1;overflow:hidden}.dsh-tc-peak{color:var(--dsw-alias-state-error-primary)}.dsh-tc-off{color:var(--dsw-alias-state-success-primary)}.dsh-tc-unknown{color:var(--dsw-alias-label-tertiary)}.dsh-tc-dot{border-radius:50%;flex:none;width:6px;height:6px}.dsh-tc-dotPeak{background:var(--dsw-alias-state-error-primary)}.dsh-tc-dotOff{background:var(--dsw-alias-state-success-primary)}.dsh-tc-dotUnknown{background:var(--dsw-alias-state-idle-primary)}.dsh-tc-detail{border:.5px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-2);border-radius:10px;flex-direction:column;gap:6px;margin-top:4px;padding:8px;display:flex}.dsh-tc-section{flex-direction:column;gap:2px;display:flex}.dsh-tc-rule{border-top:.5px solid var(--dsw-alias-border-l2);height:0;margin:5px 0}.dsh-tc-heading{color:var(--dsw-alias-label-tertiary);letter-spacing:.04em;text-transform:uppercase;font-size:10px;line-height:14px}.dsh-tc-row{justify-content:space-between;align-items:baseline;gap:8px;font-size:11px;line-height:15px;display:flex}.dsh-tc-rowName{color:var(--dsw-alias-label-secondary);text-overflow:ellipsis;white-space:nowrap;flex:none}.dsh-tc-rowValue{color:var(--dsw-alias-label-primary);font-variant-numeric:tabular-nums;text-overflow:ellipsis;white-space:nowrap;text-align:right;min-width:0;flex:1 1 auto;overflow:hidden}.dsh-tc-note{color:var(--dsw-alias-label-caption);overflow-wrap:anywhere;font-size:10px;line-height:14px}.dsh-tc-error{color:var(--dsw-alias-state-error-primary);overflow-wrap:anywhere;font-size:10px;line-height:14px}.dsh-tc-actions{justify-content:flex-end;align-items:center;gap:6px;display:flex}.dsh-tc-button{box-sizing:border-box;border:.5px solid var(--dsw-alias-border-l3);border-radius:8px;height:24px;color:var(--dsw-alias-label-primary);cursor:pointer;background:0 0;align-items:center;padding:0 8px;font:inherit;font-size:11px;line-height:16px;display:inline-flex}.dsh-tc-button:hover{background:var(--dsw-alias-interactive-bg-hover)}.dsh-tc-button:disabled{opacity:.5;cursor:default}.dsh-tc-rail{box-sizing:border-box;width:36px;height:36px;border-radius:50%;justify-content:center;align-items:center;display:flex;position:relative}.dsh-tc-railDot{border-radius:50%;width:8px;height:8px}.dsh-tc-bar{background:var(--dsw-alias-border-l2);border-radius:3px;width:100%;height:6px;margin:3px 0 4px;display:flex;position:relative;overflow:hidden}.dsh-tc-seg{display:block;height:100%}.dsh-tc-segOff{background:var(--dsw-alias-state-success-primary)}.dsh-tc-segPeak{background:var(--dsw-alias-state-error-primary)}.dsh-tc-now{background:var(--dsw-alias-label-primary);border-radius:1px;width:2px;position:absolute;top:0;bottom:0;transform:translateX(-1px)}'
-    const tagId = 'dsh-plugin-tariff-credit/footer.css'
+    const tagId = 'dsh-deepseek-credit/footer.css'
     if (
       typeof document !== 'undefined' &&
       document.querySelector('style[data-plugin-css=' + JSON.stringify(tagId) + ']') === null
     ) {
       const tag = document.createElement('style')
-      tag.dataset.plugin = 'dsh-plugin-tariff-credit'
+      tag.dataset.plugin = 'dsh-deepseek-credit'
       tag.dataset.pluginCss = tagId
       tag.textContent = css
       document.head.appendChild(tag)
@@ -1722,7 +1722,7 @@ window.__ModuleLoader__.load({
       '.dsh-tc-setInput:disabled{color:var(--dsw-alias-label-tertiary)}' +
       '.dsh-tc-setActions{display:flex;gap:6px;align-items:center}' +
       '.dsh-tc-setBox{width:16px;height:16px}'
-    const SETTINGS_CSS_ID = 'dsh-plugin-tariff-credit/settings.css'
+    const SETTINGS_CSS_ID = 'dsh-deepseek-credit/settings.css'
     if (
       typeof document !== 'undefined' &&
       document.querySelector('style[data-plugin-css=' + JSON.stringify(SETTINGS_CSS_ID) + ']') === null

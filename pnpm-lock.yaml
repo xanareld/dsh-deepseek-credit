@@ -21,7 +21,7 @@ importers:
         specifier: ^3.9.9
         version: 3.9.9
 
-  dsh-plugin-tariff-credit:
+  dsh-deepseek-credit:
     dependencies:
       '@deepseek-ai/schemastery':
         specifier: 3.18.4

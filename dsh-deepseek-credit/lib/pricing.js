@@ -9,7 +9,7 @@
  *
  * Source: https://api-docs.deepseek.com/quick_start/pricing (2026 schedule).
  *
- * @module dsh-plugin-tariff-credit/pricing
+ * @module dsh-deepseek-credit/pricing
  */
 
 import { DEFAULT_SCHEDULE, isPeak } from './schedule.js'

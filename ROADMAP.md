@@ -5,18 +5,18 @@ State and decisions. Usage is in [README.md](README.md); agent instructions are 
 
 ## State
 
-| Item                       | State                                                                                                                                                              |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `dsh-plugin-tariff-credit` | 0.1.0 — sidebar widget, `tariff_credit` agent tool, configuration card on the Plugins page, 198 test cases, `pnpm verify` green, verified against DSH `0.2.0-rc.2` |
-| Repository tooling         | `pnpm verify` (eslint + prettier + tests + metrics), CI on Linux and Windows                                                                                       |
+| Item                  | State                                                                                                                                                              |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `dsh-deepseek-credit` | 0.1.0 — sidebar widget, `tariff_credit` agent tool, configuration card on the Plugins page, 198 test cases, `pnpm verify` green, verified against DSH `0.2.0-rc.2` |
+| Repository tooling    | `pnpm verify` (eslint + prettier + tests + metrics), CI on Linux and Windows                                                                                       |
 
 ## Decisions
 
 **2026-10-09 — repository created**
 
-1. **Packages stay at the repository root** (`dsh-plugin-tariff-credit/`, not
+1. **Packages stay at the repository root** (`dsh-deepseek-credit/`, not
    `packages/…`) because a DSH profile links those exact paths
-   (`link:C:/…/dsh-plugin-tariff-credit`). A layout change can therefore never
+   (`link:C:/…/dsh-deepseek-credit`). A layout change can therefore never
    break a running installation; `pnpm-workspace.yaml` lists them explicitly.
 2. **Documentation lives in `docs/`, at the root.** Package READMEs hold usage
    only. External facts (published rates, endpoints, the verified DSH version) are

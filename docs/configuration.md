@@ -1,6 +1,6 @@
 # Configuration
 
-Every key below configures the row `dsh-plugin-tariff-credit` inserts in a profile.
+Every key below configures the row `dsh-deepseek-credit` inserts in a profile.
 Nothing is mandatory, and **every refused value is reported**: the plugin falls back
 to the shipped default and lists what it refused in the widget's expanded detail
 (`Configuration` section). A typo can therefore never leave a rate table silently
@@ -31,7 +31,7 @@ patch value again. Restart the application (or reload the profile) after editing
 patch layer by hand; a card write needs no restart.
 
 **Bounds live in one place.** The schema in
-[lib/config-schema.js](../dsh-plugin-tariff-credit/lib/config-schema.js) declares
+[lib/config-schema.js](../dsh-deepseek-credit/lib/config-schema.js) declares
 every default and range, and the table below restates them for readers. The card
 does not duplicate them: it submits what you type, the Host validates it, and a
 refusal comes back as a refusal.
@@ -45,7 +45,7 @@ refusal comes back as a refusal.
 | `timeoutMs`                | integer, `1000`–`120000`  | `15000`                          | Deadline for one balance request.                                                                                                                                                                                                                  |
 | `balanceCacheMs`           | integer, `0`–`600000`     | `30000`                          | How long a balance reading is reused. Several tabs collapse onto one request; `0` re-reads on every call.                                                                                                                                          |
 | `refreshMs`                | integer, `5000`–`3600000` | `60000`                          | How often the widget re-reads the balance while the page is visible, and on every return to visibility.                                                                                                                                            |
-| `channelDiagnostics`       | `false`, `true` or a path | `false`                          | Writes a small JSON note (no secret) on every registration attempt, to explain a silent channel failure. `true` means `%TEMP%/dsh-plugin-tariff-credit.json`. Off by default: an installed plugin writes nothing to disk unless asked.             |
+| `channelDiagnostics`       | `false`, `true` or a path | `false`                          | Writes a small JSON note (no secret) on every registration attempt, to explain a silent channel failure. `true` means `%TEMP%/dsh-deepseek-credit.json`. Off by default: an installed plugin writes nothing to disk unless asked.                  |
 | `schedule.peakWindowsUtc`  | list of `[start, end)`    | `[[60, 240], [360, 600]]`        | Peak windows in UTC minutes-of-day, `0 <= start < end <= 1440`, Monday to Friday. Each malformed window is dropped and reported; a list with no usable window at all falls back to the published schedule.                                         |
 | `schedule.holidays`        | list of `YYYY-MM-DD`      | `[]`                             | Chinese public holidays, off-peak all day. Dates are **not** guessed: leave them out and those days are over-estimated, never under-estimated. Malformed dates are dropped and reported.                                                           |
 | `schedule.weekendsOffPeak` | boolean                   | `true`                           | Whether Saturday and Sunday are off-peak in full. A non-boolean is ignored and reported.                                                                                                                                                           |

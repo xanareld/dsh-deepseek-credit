@@ -19,7 +19,7 @@
  * validated in tests against the real `clientRequestSchema` and
  * `serverResponseSchema` that `@deepseek-ai/dsh-client-connection` exports.
  *
- * @module dsh-plugin-tariff-credit/browser-channel
+ * @module dsh-deepseek-credit/browser-channel
  */
 
 /** Endpoint segment accepted by the client's own target check. */

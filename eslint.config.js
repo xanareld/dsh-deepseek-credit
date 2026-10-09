@@ -16,7 +16,7 @@ export default [
     // Other working trees can live beside this one; only the packages this repository
     // publishes are linted, so a sibling package directory is ignored by pattern
     // rather than by name.
-    ignores: ['**/node_modules/**', 'default-workspace/**', 'dsh-plugin-*/**', '!dsh-plugin-tariff-credit/**']
+    ignores: ['**/node_modules/**', 'default-workspace/**', 'dsh-plugin-*/**']
   },
   js.configs.recommended,
   {
@@ -56,7 +56,7 @@ export default [
     //  * function size, for the same `createElement` reason.
     // Complexity, parameters and depth stay enforced here like everywhere else,
     // which is what actually bounds the logic.
-    files: ['dsh-plugin-tariff-credit/lib/client.js'],
+    files: ['dsh-deepseek-credit/lib/client.js'],
     languageOptions: {
       sourceType: 'script',
       globals: { ...globals.browser }

@@ -2,7 +2,7 @@
 #
 # Every plugin package is a directory at the repository root rather than under
 # `packages/`, because those directories are already the ones a DSH profile links
-# to (`link:C:/…/dsh-plugin-tariff-credit`). Keeping the paths stable means a
+# to (`link:C:/…/dsh-deepseek-credit`). Keeping the paths stable means a
 # change here can never break a running installation.
 packages:
-  - dsh-plugin-tariff-credit
+  - dsh-deepseek-credit

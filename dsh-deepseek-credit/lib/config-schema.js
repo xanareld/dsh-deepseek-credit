@@ -23,7 +23,7 @@
  * the settings document, and the hand-checked resolver still guards the runtime
  * values and reports whatever it refuses.
  *
- * @module dsh-plugin-tariff-credit/config-schema
+ * @module dsh-deepseek-credit/config-schema
  */
 
 import Schema from '@deepseek-ai/schemastery'

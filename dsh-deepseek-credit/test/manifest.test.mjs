@@ -15,7 +15,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const manifest = JSON.parse(readFileSync(join(root, 'package.json'), 'utf8'))
 
 test('the manifest exposes the three entry points DSH looks for', () => {
-  assert.equal(manifest.name, 'dsh-plugin-tariff-credit')
+  assert.equal(manifest.name, 'dsh-deepseek-credit')
   assert.equal(manifest.type, 'module')
   assert.equal(manifest.main, 'lib/index.js')
   for (const key of ['.', './client', './cordis.patch.yml', './package.json']) {

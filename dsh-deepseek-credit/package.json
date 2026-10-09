@@ -1,5 +1,5 @@
 {
-  "name": "dsh-plugin-tariff-credit",
+  "name": "dsh-deepseek-credit",
   "version": "0.1.0",
   "description": "DeepSeek Harness sidebar widget: peak/off-peak rate window, exact conversation cost (subagents included) and remaining DeepSeek API credit.",
   "type": "module",
@@ -8,9 +8,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xanareld/dsh-deepseek-credit.git",
-    "directory": "dsh-plugin-tariff-credit"
+    "directory": "dsh-deepseek-credit"
   },
-  "homepage": "https://github.com/xanareld/dsh-deepseek-credit/tree/main/dsh-plugin-tariff-credit#readme",
+  "homepage": "https://github.com/xanareld/dsh-deepseek-credit/tree/main/dsh-deepseek-credit#readme",
   "bugs": {
     "url": "https://github.com/xanareld/dsh-deepseek-credit/issues"
   },

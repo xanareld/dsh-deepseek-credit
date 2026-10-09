@@ -21,7 +21,7 @@
  * Honesty rules mirror the widget: an unknown cost is never reported as 0, and
  * requests the fold could not price are counted and disclosed.
  *
- * @module dsh-plugin-tariff-credit/tariff-tool
+ * @module dsh-deepseek-credit/tariff-tool
  */
 
 import { formatUsd } from './pricing.js'

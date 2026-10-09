@@ -4,9 +4,9 @@ Two halves. The **host** half holds the API key and folds the durable session
 log; the **browser** half renders numbers it is given and never sees a secret.
 
 ```
-dsh-plugin-tariff-credit/
+dsh-deepseek-credit/
 ├── package.json          DSH manifest: bundle patch + `dsh.client.platform: web`
-├── cordis.patch.yml      one `insert` row: { id: tariff-credit, name: dsh-plugin-tariff-credit }
+├── cordis.patch.yml      one `insert` row: { id: tariff-credit, name: dsh-deepseek-credit }
 ├── lib/
 │   ├── index.js          host assembly: config, projection, RPC route, agent tool
 │   ├── schedule.js       peak/off-peak rule (pure, UTC)
