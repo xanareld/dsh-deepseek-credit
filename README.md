@@ -8,6 +8,15 @@ The DeepSeek cost and credit plugin for [DeepSeek Harness](https://github.com/de
 (DSH): what a conversation cost, which rate window is in force, and how much API credit is
 left — in the sidebar where you already look.
 
+<p>
+  <img src="docs/images/widget-collapsed.svg" width="49%" alt="The widget collapsed at the foot of the sidebar: the rate window, the switch to the next one, the cost of the conversation and of today, and the remaining credit">
+  <img src="docs/images/widget-expanded.svg" width="49%" alt="The same widget expanded: the rate window with its start and next switch, the cost broken down by peak and off-peak, and the credit with the time it was read">
+</p>
+
+_The interface is a reproduction, not a screenshot of a running installation: the widget's
+markup and stylesheet are the plugin's own, while the surrounding shell and the figures are
+illustrative._
+
 The package, [`dsh-deepseek-credit`](dsh-deepseek-credit/), adds the peak/off-peak rate
 window, the exact cost of a conversation with its subagents, the remaining API credit, a
 `tariff_credit` tool an agent can call for its own spend, and a configuration card on the
