@@ -112,6 +112,25 @@ reviewable, not a second gate.
   registration and unregistration, the settings-page policy and its deferral, and the
   diagnostics note.
 
+## The event loop, and one trap that cost a CI run
+
+A test that waits for a deadline must keep the event loop referenced while it waits.
+Node's own `AbortSignal.timeout` — which is how the balance reader arms its deadline —
+uses an **unreferenced** timer, so when a fake `fetch` returns a promise that holds no
+handle, nothing keeps the loop alive, the deadline can never fire, and the runner ends
+the file first. On Node 22 that surfaces as `cancelledByParent` with
+`Promise resolution is still pending but the event loop has already resolved`, not as
+a failing assertion: the suite reported every test passing **and exited non-zero**,
+which is why `pnpm verify` was red on both CI runners while it was green locally on
+Node 24.
+
+The fake therefore holds a bounded handle (a two-second timer, cleared when the
+request is aborted) exactly like the socket of a real pending request. The plugin's
+own code needs no change: a real hung `fetch` holds a socket, so the deadline fires
+there. Two lessons are worth keeping — run the suite on the Node version the CI
+declares, and read `# cancelled` in the runner's summary, since a cancellation does
+not appear as a failure.
+
 ## What the suite does not cover
 
 Stated plainly, because a test suite that overstates itself is worse than a small

@@ -195,11 +195,20 @@ test('a transport error and a non-JSON body are reported, not thrown', async () 
 })
 
 test('a timeout is reported as a timeout', async () => {
+  // The hanging fetch holds a handle, the way a real pending socket does. That is
+  // not decoration: Node's `AbortSignal.timeout` timer is unreferenced, so a fake
+  // fetch that holds nothing lets the event loop drain before the deadline and the
+  // timeout can never fire. On Node 22 the test runner reports that as a cancelled
+  // test rather than as a failure, which is how this was found (see docs/testing.md).
   const reader = createBalanceReader({
     timeoutMs: 10,
     fetchImpl: (_url, init) =>
       new Promise((_resolve, reject) => {
-        init.signal.addEventListener('abort', () => reject(new Error('aborted')))
+        const keepAlive = setTimeout(() => {}, 2_000)
+        init.signal.addEventListener('abort', () => {
+          clearTimeout(keepAlive)
+          reject(new Error('aborted'))
+        })
       }),
     resolveKey: async () => 'sk-test-key'
   })
