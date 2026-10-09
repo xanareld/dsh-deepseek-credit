@@ -1,0 +1,12 @@
+# The tariff-credit bundle patch: one insert over the profile root, adding this
+# package's Host half as a row. The profile's own cordis.patch.yml can retarget
+# it by id (`tariff-credit`) to change the schedule, the rate table, the API
+# base or the refresh cadence.
+#
+# The bare package name resolves through the runtime resolution the launcher
+# computes from the profile's bundle list, which is why this package has to be
+# installed as a dependency of the profile rather than merely present on disk.
+
+- insert:
+    - id: tariff-credit
+      name: dsh-plugin-tariff-credit

@@ -1,0 +1,22 @@
+# Working material that is not part of the published repository.
+# `default-workspace/` holds the operator's scratch tree (session media, research
+# dumps, an extracted DSH build); it must never be committed.
+/default-workspace/
+
+# Not onboarded into this repository yet: its packaging pass, tests and docs are
+# still pending. Tracked outside this tree for now; see ROADMAP.md.
+/dsh-plugin-fal-credit/
+
+# Installed tooling.
+node_modules/
+pnpm-debug.log*
+
+# Editor and OS noise.
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local scratch output.
+.tmp-*

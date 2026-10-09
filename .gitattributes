@@ -1,0 +1,17 @@
+# One line-ending convention for every platform.
+#
+# The repository stores LF, and a Windows checkout does not rewrite it, so
+# `prettier --check` (endOfLine: "lf") means the same thing on Linux, on macOS and
+# on Windows. Without this file, a Windows checkout would convert every text file
+# and the format check would fail for a contributor who changed nothing.
+* text=auto eol=lf
+
+# Binaries: never line-ending-normalised, never diffed as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.woff binary
+*.woff2 binary

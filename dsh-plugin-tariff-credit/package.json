@@ -1,0 +1,47 @@
+{
+  "name": "dsh-plugin-tariff-credit",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness sidebar widget: peak/off-peak rate window, exact conversation cost (subagents included) and remaining DeepSeek API credit.",
+  "type": "module",
+  "license": "MIT",
+  "author": "xanareld",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek",
+    "deepseek-harness",
+    "credit",
+    "balance",
+    "cost",
+    "sidebar"
+  ],
+  "engines": {
+    "node": ">=20.3.0"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "3.18.4"
+  }
+}
