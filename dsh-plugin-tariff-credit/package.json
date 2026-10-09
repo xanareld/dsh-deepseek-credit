@@ -39,7 +39,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node --test"
+    "test": "node --test --import ./test/support/pin-timezone.mjs"
   },
   "dependencies": {
     "@deepseek-ai/schemastery": "3.18.4"

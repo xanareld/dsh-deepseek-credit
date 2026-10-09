@@ -21,13 +21,14 @@ would be half a result.
 
 Write formatting with `pnpm format`; `verify` checks rather than applies.
 
-Just the tests, in one package:
+Just the tests, in one package — through the script, which pins the timezone the
+assertions are written in (see below):
 
 ```sh
-cd dsh-plugin-tariff-credit && node --test
+cd dsh-plugin-tariff-credit && pnpm test
 ```
 
-199 test entries, 197 cases, no network, no DSH runtime, no browser.
+200 test entries, 197 cases, no network, no DSH runtime, no browser.
 
 ## Quality thresholds
 
@@ -112,24 +113,37 @@ reviewable, not a second gate.
   registration and unregistration, the settings-page policy and its deferral, and the
   diagnostics note.
 
-## The event loop, and one trap that cost a CI run
+## The event loop, the clock, and two traps that cost a CI run
 
-A test that waits for a deadline must keep the event loop referenced while it waits.
-Node's own `AbortSignal.timeout` — which is how the balance reader arms its deadline —
-uses an **unreferenced** timer, so when a fake `fetch` returns a promise that holds no
-handle, nothing keeps the loop alive, the deadline can never fire, and the runner ends
-the file first. On Node 22 that surfaces as `cancelledByParent` with
+**The event loop.** A test that waits for a deadline must keep the event loop
+referenced while it waits. Node's own `AbortSignal.timeout` — which is how the
+balance reader arms its deadline — uses an **unreferenced** timer, so when a fake
+`fetch` returns a promise that holds no handle, nothing keeps the loop alive, the
+deadline can never fire, and the runner ends the file first. On Node 22 that surfaces
+as `cancelledByParent` with
 `Promise resolution is still pending but the event loop has already resolved`, not as
-a failing assertion: the suite reported every test passing **and exited non-zero**,
-which is why `pnpm verify` was red on both CI runners while it was green locally on
-Node 24.
+a failing assertion: 196 of 199 tests still reported success **and the run exited
+non-zero**, which is why `pnpm verify` was red on both CI runners while it was green
+locally on Node 24.
 
 The fake therefore holds a bounded handle (a two-second timer, cleared when the
 request is aborted) exactly like the socket of a real pending request. The plugin's
 own code needs no change: a real hung `fetch` holds a socket, so the deadline fires
-there. Two lessons are worth keeping — run the suite on the Node version the CI
-declares, and read `# cancelled` in the runner's summary, since a cancellation does
-not appear as a failure.
+there.
+
+**The clock.** The widget renders two things in the machine's local time on purpose:
+"today" since local midnight, and the hour of the next rate-window switch. A test that
+asserts either literal only passes in the zone where it was written — this suite was
+written in `Europe/Paris` and expected `Switches06:00 (2 h)` where the UTC runners
+render `Switches04:00 (2 h)`. The `test` script therefore loads
+`test/support/pin-timezone.mjs`, which fixes `TZ=UTC` for every test process, so a
+laptop and a runner give the same answer. The widget itself keeps using the machine's
+zone; only the assertions are pinned. Verified in `Europe/Paris`, `UTC`,
+`Pacific/Auckland` and `America/Anchorage`, on Node 22 and Node 24.
+
+Three lessons worth keeping: run the suite on the Node version the CI declares, run it
+under a foreign timezone as well, and read `# cancelled` in the runner's summary,
+because a cancellation never appears as a failure.
 
 ## What the suite does not cover
 

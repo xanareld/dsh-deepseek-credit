@@ -289,8 +289,9 @@ test('the strip lives in the compact block only, and the switch carries its dela
 
   const text = fake.toText(element)
   // The delay sits in brackets as a bare duration, and the "Dans" row it came
-  // from is still gone.
-  assert.match(text, /Switches06:00 \(2 h\)/, 'the brackets hold the duration and nothing else')
+  // from is still gone. The hour is UTC because the suite pins the zone (see
+  // test/support/pin-timezone.mjs): this instant is 06:00 in Paris and 04:00 in UTC.
+  assert.match(text, /Switches04:00 \(2 h\)/, 'the brackets hold the duration and nothing else')
   assert.doesNotMatch(text, /\(in /, 'no leading word inside the brackets')
   assert.doesNotMatch(text, /Within/)
 })
