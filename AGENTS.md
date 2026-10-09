@@ -28,14 +28,14 @@ in that file.
 ## Layout
 
 ```
-dsh-plugin-<name>/     one package per plugin, at the root, because a DSH profile
-                       links these exact paths
+dsh-deepseek-credit/   the package, at the root, carrying the repository's own name
+                       because a DSH profile links that exact path
 docs/                  all documentation, at the root, never inside a package
 scripts/               repository tooling
 ```
 
-Adding a package means adding it to `pnpm-workspace.yaml` and to the table in
-README.md, in the same change.
+Adding a package means adding it to `pnpm-workspace.yaml`, to the package list in
+`scripts/metrics.mjs`, and to the README's Description section, in the same change.
 
 ## Rules that this repository has already been bitten by
 
