@@ -9,8 +9,7 @@ The DeepSeek cost and credit plugin for [DeepSeek Harness](https://github.com/de
 left — in the sidebar where you already look.
 
 <p>
-  <img src="docs/images/widget-collapsed.svg" width="49%" alt="The widget collapsed at the foot of the sidebar: the rate window, the switch to the next one, the cost of the conversation and of today, and the remaining credit">
-  <img src="docs/images/widget-expanded.svg" width="49%" alt="The same widget expanded: the rate window with its start and next switch, the cost broken down by peak and off-peak, and the credit with the time it was read">
+  <img src="docs/images/widget-preview.svg" width="100%" alt="The foot of the sidebar twice: behind, the widget collapsed with the rate window, the next switch, the cost of the conversation and of today, and the remaining credit; in front, the same widget expanded, with the window's start and switch, the cost broken down by peak and off-peak, and the credit with the time it was read">
 </p>
 
 _The interface is a reproduction, not a screenshot of a running installation: the widget's
