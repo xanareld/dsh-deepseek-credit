@@ -122,7 +122,12 @@ Done, in this order:
 - `repository`, `homepage` and `bugs` now name the real URL in both manifests, and the
   root README carries the workflow badge;
 - CI is **green on Ubuntu and Windows** (`verify`), and the step annotates its own
-  failing sub-step rather than reporting a bare exit code.
+  failing sub-step rather than reporting a bare exit code;
+- the repository publishes **no personal identity**: every commit carries the GitHub
+  no-reply address (`189785950+xanareld@users.noreply.github.com`), the copyright notice
+  and the package `author` name the handle, and this machine's git configuration carries
+  the same address so a later commit cannot reintroduce the other one. The history was
+  rewritten once for that, before anyone could have cloned it.
 
 Still owner-held:
 
