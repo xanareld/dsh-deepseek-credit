@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="1152" height="702.12" viewBox="0 0 1152 702.12">
+  width="1232" height="782.12" viewBox="0 0 1232 782.12">
   <defs>
     <!-- Lifts the front frame off the one behind it. -->
     <filter id="frame-shadow" x="-4%" y="-4%" width="112%" height="112%">
       <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.22"/>
     </filter>
   </defs>
-  <svg x="0" y="0" width="960" height="585.12" viewBox="0 0 960 585.12">
+  <svg x="40" y="40" width="960" height="585.12" viewBox="0 0 960 585.12">
 
 <defs>
 <clipPath id="behind_clip_1">
@@ -1175,7 +1175,7 @@
 </g>
 
   </svg>
-  <svg x="192" y="117" width="960" height="585.12" viewBox="0 0 960 585.12"
+  <svg x="232" y="157" width="960" height="585.12" viewBox="0 0 960 585.12"
     filter="url(#frame-shadow)">
 
 <defs>
