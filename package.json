@@ -1,5 +1,5 @@
 {
-  "name": "dsh-plugins",
+  "name": "dsh-deepseek-credit",
   "version": "0.0.0",
   "private": true,
   "description": "DeepSeek Harness plugins: sidebar cost, peak/off-peak rate window and remaining API credit.",

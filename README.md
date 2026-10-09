@@ -1,15 +1,16 @@
-# dsh-plugins
+# dsh-deepseek-credit
 
 [![verify](https://github.com/xanareld/dsh-deepseek-credit/actions/workflows/verify.yml/badge.svg)](https://github.com/xanareld/dsh-deepseek-credit/actions/workflows/verify.yml)
 
-Plugins for [DeepSeek Harness](https://github.com/deepseek-ai) (DSH): what a
-conversation cost, which rate window is in force, and how much API credit is
+The DeepSeek cost and credit plugin for [DeepSeek Harness](https://github.com/deepseek-ai)
+(DSH): what a conversation cost, which rate window is in force, and how much API credit is
 left — in the sidebar where you already look.
 
-| Package                                                 | What it does                                                                                                                                                                                                                     | State                                                 |
-| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| [`dsh-plugin-tariff-credit`](dsh-plugin-tariff-credit/) | Sidebar widget: DeepSeek peak/off-peak window, exact conversation cost (subagents included), remaining API credit, plus a `tariff_credit` tool an agent can call for its own spend and a configuration card on the Plugins page. | shipped, 197 test cases, `pnpm verify` green          |
-| `dsh-plugin-fal-credit`                                 | Same idea for fal.ai: conversation cost, fal balance, and a model authorization modal.                                                                                                                                           | not onboarded here yet — see [ROADMAP.md](ROADMAP.md) |
+[`dsh-plugin-tariff-credit`](dsh-plugin-tariff-credit/) is that plugin: the peak/off-peak
+rate window, the exact cost of the conversation with its subagents, the remaining API
+credit, a `tariff_credit` tool an agent can call for its own spend, and a configuration
+card on the Plugins page. Version 0.1.0, verified against DSH `0.2.0-rc.2`; `pnpm verify`
+covers it with **198 test cases** on Linux and Windows.
 
 ## Install
 

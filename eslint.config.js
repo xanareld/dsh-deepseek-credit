@@ -13,7 +13,10 @@ import globals from 'globals'
  */
 export default [
   {
-    ignores: ['**/node_modules/**', 'default-workspace/**', 'dsh-plugin-fal-credit/**']
+    // Other working trees can live beside this one; only the packages this repository
+    // publishes are linted, so a sibling package directory is ignored by pattern
+    // rather than by name.
+    ignores: ['**/node_modules/**', 'default-workspace/**', 'dsh-plugin-*/**', '!dsh-plugin-tariff-credit/**']
   },
   js.configs.recommended,
   {

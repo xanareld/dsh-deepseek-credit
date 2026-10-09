@@ -1,4 +1,10 @@
 node_modules/
 default-workspace/
-dsh-plugin-fal-credit/
+
+# Other working trees can live beside this one; only the packages this repository
+# publishes are formatted, so a sibling package directory is ignored by pattern
+# rather than by name.
+dsh-plugin-*/
+!dsh-plugin-tariff-credit/
+
 pnpm-lock.yaml
