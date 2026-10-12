@@ -12,9 +12,7 @@ left — in the sidebar where you already look.
   <img src="docs/images/widget-preview.svg" width="100%" alt="The foot of the sidebar twice: behind, the widget collapsed with the rate window, the next switch, the cost of the conversation and of today, and the remaining credit; in front, the same widget expanded, with the window's start and switch, the cost broken down by peak and off-peak, and the credit with the time it was read">
 </p>
 
-_The interface is a reproduction, not a screenshot of a running installation: the widget's
-markup and stylesheet are the plugin's own, while the surrounding shell and the figures are
-illustrative._
+_The interface is a reproduction, not a screenshot of a running installation._
 
 The package, [`dsh-deepseek-credit`](dsh-deepseek-credit/), adds the peak/off-peak rate
 window, the exact cost of a conversation with its subagents, the remaining API credit, a
